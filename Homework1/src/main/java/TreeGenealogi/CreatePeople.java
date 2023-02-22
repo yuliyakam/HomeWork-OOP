@@ -18,41 +18,41 @@ int count = 1;
 private void init(){
     person = new People();
 
-    person.id = count;
-    person.fname = "";
-    person.name = "";
-    person.lname = "";
-    person.birghtday = LocalDate.of(1900, 7, 1);
-    person.sex = "";
+    person.setId(count);
+    person.setFname("");
+    person.setName("");
+    person.setLname("");
+    person.setBirghtday(LocalDate.of(1900, 7, 1));
+    person.setSex("");
 
 }
 public CreatePeople setId(){
-    person.id = count;
+    person.setId(count);
     count++;
     return this;
 }
 public CreatePeople setFname(String fname){
-        person.fname = fname;
+        person.setFname(fname);
         return this;
     }
 public CreatePeople setName(String name){
-    person.name = name;
+    person.setName(name);
     return this;
 }
 public CreatePeople setLname(String lname){
-    person.lname = lname;
+    person.setLname(lname);
     return this;
 }
 public CreatePeople setBirghtday(LocalDate ofBirth){
-    person.birghtday = ofBirth;
+    person.setBirghtday(ofBirth);
     return this;
 }
 public CreatePeople setSex(String sex){
-    person.sex = sex;
+    person.setSex(sex);
     return this;
 }
 public CreatePeople setStatus(String status) {
-    person.status = status;
+    person.setStatus(status);
     return this;
 }
 public  People create(){

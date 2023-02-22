@@ -1,29 +1,45 @@
 package TreeGenealogi;
 
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+
 public class Kinship {
-    public ArrayList<Node> pairs = new ArrayList<>();
-    public void setKinship(People who, Relationship role, People whose){
-        pairs.add(new Node(who, role,whose));
+
+
+    private List<Node> pairs = new ArrayList<>();
+    private List<List<Node>> kinships = new ArrayList<>();
+
+
+    public Kinship(ArrayList<Node> pairs) {
+        this.pairs = pairs;
 
     }
-    public void printPairs(){
-        //System.out.println(Arrays.asList(pairs));
-        for(var el : pairs) {
-            System.out.println(el.p1.fname +" " + el.p1.name +" " + el.p1.lname + " " + el.r );
-            System.out.println(el.p2.fname+" " + el.p2.name + " " + el.p2.lname);
-        }
+
+    public Kinship() {
+        this(new ArrayList<>());
 
     }
-    public ArrayList<Node> getPairs() {
+
+    public void setKinship(People who, Relationship role, People whose) {
+        this.pairs.add(new Node(who, role, whose));
+        this.kinships.add(pairs);
+    }
+
+    public List<Node> getPairs() {
         return pairs;
     }
 
+    public List<List<Node>> getKinships() {
+        return kinships;
+    }
 
-
-
+    @Override
+    public String toString() {
+        return "Kinship{" +
+                "pairs=" + pairs +
+                '}';
+    }
 }
 

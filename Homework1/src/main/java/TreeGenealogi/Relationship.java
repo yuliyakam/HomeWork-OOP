@@ -1,5 +1,5 @@
 package TreeGenealogi;
 
 public enum Relationship {
-    mother, father, sister, brother, wife, husband, daughter, son;
+    MOTHER, FATHER, SISTER, BROTHER, WIFE, HUSBAND, DAUGHTER, SON;
 }
