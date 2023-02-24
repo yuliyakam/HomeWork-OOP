@@ -1,11 +1,12 @@
 package TreeGenealogi;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Kinship {
+public class Kinship implements Serializable {
 
 
     private List<Node> pairs = new ArrayList<>();

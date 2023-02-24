@@ -1,8 +1,9 @@
 package TreeGenealogi;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class People extends Person {
+public class People extends Person implements Serializable {
     private int id;
     private String fname;
     private String name;

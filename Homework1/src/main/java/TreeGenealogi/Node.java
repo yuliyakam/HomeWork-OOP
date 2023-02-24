@@ -1,6 +1,8 @@
 package TreeGenealogi;
 
-public class Node {
+import java.io.Serializable;
+
+public class Node implements Serializable {
     People p1;
     Relationship r;
     People p2;

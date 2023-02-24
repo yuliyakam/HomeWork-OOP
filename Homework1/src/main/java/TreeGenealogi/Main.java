@@ -1,14 +1,15 @@
 package TreeGenealogi;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 
 
-public class Main {
+public class Main implements Serializable {
 
     public static Scanner input = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         PeopleRepository pr = new PeopleRepository();
 
@@ -81,9 +82,34 @@ public class Main {
         pr.setFamily(k3.getPairs());
         pr.setFamily(k4.getPairs());
 
-        pr.getAllTree();
-        pr.getTreeByOnePeople();
 
+        System.out.println("Хотите добавить нового члена семьи? Если да, нажмите 1");
+        int step = input.nextInt();
+        if (step == 1) {
+            People newPeople = new People();
+            newPeople = pr.addInfoAboutNewPeople();
+            pr.setNewKinship(newPeople);//Здесь можно добавить цикл и установить все необходимые связи, в качестве теста
+            //добавляла инфу по жене сына Михаила, т.к она с семьей не имеет кровной связи установилась связь только с
+            //Михаилом. В консоль получила результат Браун Мария Сергеевна WIFE Белоконь Михаил Иванович
+            System.out.println("----------------------------------------");
+            //выводим в консоль подтверждение, что новый член семьи добавлен, в метод вводим данные нового члена
+            pr.getTreeByOnePeople();
+        } else System.out.println("Всего доброго!");
+//Экспорт в файл temp.out через сериализацию текущего древа
+        FileOutputStream fos = new FileOutputStream("temp.out");
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        ;
+        oos.writeObject(pr);
+        oos.flush();
+        oos.close();
+
+//Для импорта древа из файла temp.out. Создаем новый объект класса PeopleRepository. Экспортируем в него сохраненное древо
+//Для проверки выводим информацию по семье вызвав на этом объекте метод getAllTree()
+        PeopleRepository prExport = new PeopleRepository();
+        FileInputStream fis = new FileInputStream("temp.out");
+        ObjectInputStream oin = new ObjectInputStream(fis);
+        prExport = (PeopleRepository) oin.readObject();
+        prExport.getAllTree();
 
 ////запись в файл информации по 1 человеку
 //        SaveTxt infoOnePeople = new SaveTxt();
@@ -92,6 +118,17 @@ public class Main {
 ////запись в файл информации по семье
 //        SaveTxt infoAllFamily = new SaveTxt();
 //        infoAllFamily.saveFamilyTree(family);
+
+
+
+
+
+
+
+
+
+
+
 
 
 //      System.out.println("Здравствуйте! Давайте создадим ваше родовое древо\n Необходимо ввести следующие данные");
