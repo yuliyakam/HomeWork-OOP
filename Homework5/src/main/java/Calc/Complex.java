@@ -2,7 +2,7 @@ package Calc;
 
 import java.util.Scanner;
 
-public class Complex extends Number {
+public class Complex extends Number{
     public static Scanner input = new Scanner(System.in);
 
     double realPart;

@@ -2,7 +2,7 @@ package Calc;
 
 import java.util.Scanner;
 
-public class Rational extends Number {
+public class Rational extends Number{
     public static Scanner input = new Scanner(System.in);
 
     private int numerator;
@@ -49,4 +49,7 @@ public class Rational extends Number {
     public String toString() {
         return numerator + "/" + denominator;
     }
+
+
+
 }
